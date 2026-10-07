@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2026 at 04:14 PM
+-- Generation Time: Oct 07, 2026 at 08:09 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `it0049_tfa3_pos`
+-- Database: `it0049_tfa4_pos`
 --
 
 -- --------------------------------------------------------
@@ -58,6 +58,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `full_name` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `avatar` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -66,14 +67,15 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `full_name`, `avatar`, `created_at`) VALUES
-(1, 'peter.parker', 'Peter Parker', '1790776567_eb803b8db5f62fac6d01.jpg', '2026-09-21 07:44:51'),
-(2, 'steve.rogers', 'Steve Rogers', '1790777595_b1f6ed2481999c888ae6.jpg', '2026-09-21 07:44:51'),
-(3, 'natasha.romanoff', 'Natasha Romanoff', NULL, '2026-09-21 07:44:51'),
-(4, 'clark.kent', 'Clark Kent', NULL, '2026-09-21 07:44:51'),
-(5, 'diana.prince', 'Diana Prince', NULL, '2026-09-21 07:44:51'),
-(6, 'whoistheuser', 'who is the user', NULL, '2026-09-30 13:23:25'),
-(7, 'newuser', 'new user', NULL, '2026-09-30 14:09:43');
+INSERT INTO `users` (`id`, `username`, `full_name`, `password`, `avatar`, `created_at`) VALUES
+(1, 'peter.parker', 'Peter Parker', '$2y$10$85ENy7g1VfHwPUX94H4MqOtU1IhnB9UzMwJE.xKDnQ3vuxbeiemMG', '1790776567_eb803b8db5f62fac6d01.jpg', '2026-09-21 07:44:51'),
+(2, 'steve.rogers', 'Steve Rogers', '$2y$10$85ENy7g1VfHwPUX94H4MqOtU1IhnB9UzMwJE.xKDnQ3vuxbeiemMG', '1790777595_b1f6ed2481999c888ae6.jpg', '2026-09-21 07:44:51'),
+(3, 'natasha.romanoff', 'Natasha Romanoff', '$2y$10$85ENy7g1VfHwPUX94H4MqOtU1IhnB9UzMwJE.xKDnQ3vuxbeiemMG', NULL, '2026-09-21 07:44:51'),
+(4, 'clark.kent', 'Clark Kent', '$2y$10$85ENy7g1VfHwPUX94H4MqOtU1IhnB9UzMwJE.xKDnQ3vuxbeiemMG', NULL, '2026-09-21 07:44:51'),
+(5, 'diana.prince', 'Diana Prince', '$2y$10$85ENy7g1VfHwPUX94H4MqOtU1IhnB9UzMwJE.xKDnQ3vuxbeiemMG', NULL, '2026-09-21 07:44:51'),
+(6, 'whoistheuser', 'who is the user', '$2y$10$85ENy7g1VfHwPUX94H4MqOtU1IhnB9UzMwJE.xKDnQ3vuxbeiemMG', NULL, '2026-09-30 13:23:25'),
+(7, 'newuser', 'new user', '$2y$10$85ENy7g1VfHwPUX94H4MqOtU1IhnB9UzMwJE.xKDnQ3vuxbeiemMG', NULL, '2026-09-30 14:09:43'),
+(8, 'system.architect', 'Charles Miguel Martin', '$2y$10$Lx6I04LlPQdRR2BjS1Lnbu1nsLAXa.5oIvc6pTdAuwzt58zktXAv.', NULL, '2026-10-07 06:06:15');
 
 --
 -- Indexes for dumped tables
@@ -106,7 +108,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

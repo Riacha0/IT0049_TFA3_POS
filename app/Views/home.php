@@ -2,16 +2,29 @@
 <html>
 <head>
     <title>POS Home</title>
-    <link rel="stylesheet" href="/css/style.css">
+   <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/customers">Customer Accounts</a>
-        <a href="/users">User Accounts</a>
-    </nav>
+   <nav>
+    <div class="nav-container">
+        <a href="<?= base_url('/') ?>">Home</a>
+        <a href="<?= base_url('/about') ?>">About</a>
+        <a href="<?= base_url('/customers') ?>">Customer Accounts</a>
+        <a href="<?= base_url('/users') ?>">User Accounts</a>
 
+        <?php if (session()->get('isLoggedIn')): ?>
+            <span class="nav-user">
+                <?= esc(session()->get('full_name')) ?>
+            </span>
+
+            <a href="<?= base_url('/logout') ?>" class="logout-link">
+                Logout
+            </a>
+        <?php else: ?>
+            <a href="<?= base_url('/login') ?>">Login</a>
+        <?php endif; ?>
+    </div>
+</nav>
     <main>
         <h1>Welcome to the POS System</h1>
 

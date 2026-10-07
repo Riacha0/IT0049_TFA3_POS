@@ -1,30 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>User Accounts</title>
-   <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/customers">Customer Accounts</a>
-        <a href="/users">User Accounts</a>
-    </nav>
+<?= view('templates/header') ?>
 
-    <main>
-        <h1>User Accounts</h1>
-        <?php if (session()->getFlashdata('success')): ?>
+<h1>User Accounts</h1>
+
+<?php if (session()->getFlashdata('success')): ?>
     <div class="success-message">
         <?= esc(session()->getFlashdata('success')) ?>
     </div>
-<?php endif ?>
+<?php endif; ?>
 
 <a href="<?= base_url('/users/new') ?>" class="button add-button">
     Add New User
 </a>
 
-      <table>
+<table>
     <thead>
         <tr>
             <th>Avatar</th>
@@ -49,7 +37,7 @@
                         <div class="avatar-placeholder">
                             <?= esc(strtoupper(substr($user['full_name'], 0, 1))) ?>
                         </div>
-                    <?php endif ?>
+                    <?php endif; ?>
                 </td>
 
                 <td><?= esc($user['username']) ?></td>
@@ -65,9 +53,8 @@
                     </a>
                 </td>
             </tr>
-        <?php endforeach ?>
+        <?php endforeach; ?>
     </tbody>
 </table>
-    </main>
-</body>
-</html>
+
+<?= view('templates/footer') ?>

@@ -14,8 +14,32 @@
     <div class="nav-container">
         <a href="<?= base_url('/') ?>">Home</a>
         <a href="<?= base_url('/about') ?>">About</a>
-        <a href="<?= base_url('/customers') ?>">Customer Accounts</a>
-        <a href="<?= base_url('/users') ?>">User Accounts</a>
+
+        <?php if (session()->get('isLoggedIn')): ?>
+
+            <a href="<?= base_url('/customers') ?>">
+                Customer Accounts
+            </a>
+
+            <a href="<?= base_url('/users') ?>">
+                User Accounts
+            </a>
+
+            <span class="nav-user">
+                <?= esc(session()->get('full_name')) ?>
+            </span>
+
+            <a href="<?= base_url('/logout') ?>" class="logout-link">
+                Logout
+            </a>
+
+        <?php else: ?>
+
+            <a href="<?= base_url('/login') ?>">
+                Login
+            </a>
+
+        <?php endif; ?>
     </div>
 </nav>
 

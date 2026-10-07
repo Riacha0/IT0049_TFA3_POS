@@ -35,6 +35,14 @@ class Users extends BaseController
                 'label' => 'Full Name',
                 'rules' => 'required|min_length[3]|max_length[100]',
             ],
+            'password' => [
+                'label' => 'Password',
+                'rules' => 'required|min_length[8]|max_length[255]',
+            ],
+            'password_confirm' => [
+                'label' => 'Confirm Password',
+                'rules' => 'required|matches[password]',
+            ],
         ];
 
         if (!$this->validate($rules)) {
@@ -47,8 +55,16 @@ class Users extends BaseController
         $userModel = new UserModel();
 
         $userModel->insert([
-            'username'   => strtolower(trim($this->request->getPost('username'))),
-            'full_name'  => trim($this->request->getPost('full_name')),
+            'username' => strtolower(
+                trim($this->request->getPost('username'))
+            ),
+            'full_name' => trim(
+                $this->request->getPost('full_name')
+            ),
+            'password' => password_hash(
+                $this->request->getPost('password'),
+                PASSWORD_DEFAULT
+            ),
             'created_at' => date('Y-m-d H:i:s'),
         ]);
 
@@ -116,8 +132,12 @@ class Users extends BaseController
         }
 
         $updateData = [
-            'username'  => strtolower(trim($this->request->getPost('username'))),
-            'full_name' => trim($this->request->getPost('full_name')),
+            'username' => strtolower(
+                trim($this->request->getPost('username'))
+            ),
+            'full_name' => trim(
+                $this->request->getPost('full_name')
+            ),
         ];
 
         if ($avatar && $avatar->isValid() && !$avatar->hasMoved()) {
@@ -132,7 +152,11 @@ class Users extends BaseController
             service('image')
                 ->withFile($avatar->getTempName())
                 ->fit(300, 300, 'center')
-                ->save($uploadPath . DIRECTORY_SEPARATOR . $newName);
+                ->save(
+                    $uploadPath
+                    . DIRECTORY_SEPARATOR
+                    . $newName
+                );
 
             $updateData['avatar'] = $newName;
         }

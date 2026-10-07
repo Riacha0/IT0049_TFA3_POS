@@ -10,10 +10,10 @@
             <ul>
                 <?php foreach ($errors as $error): ?>
                     <li><?= esc($error) ?></li>
-                <?php endforeach ?>
+                <?php endforeach; ?>
             </ul>
         </div>
-    <?php endif ?>
+    <?php endif; ?>
 
     <form action="<?= base_url('/users/create') ?>" method="post">
         <?= csrf_field() ?>
@@ -42,12 +42,39 @@
             >
         </div>
 
+        <div class="form-group">
+            <label for="password">Password</label>
+
+            <input
+                type="password"
+                id="password"
+                name="password"
+                minlength="8"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="password_confirm">Confirm Password</label>
+
+            <input
+                type="password"
+                id="password_confirm"
+                name="password_confirm"
+                minlength="8"
+                required
+            >
+        </div>
+
         <div class="form-actions">
             <button type="submit" class="button">
                 Save User
             </button>
 
-            <a href="<?= base_url('/users') ?>" class="button cancel-button">
+            <a
+                href="<?= base_url('/users') ?>"
+                class="button cancel-button"
+            >
                 Cancel
             </a>
         </div>
